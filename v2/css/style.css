@@ -1,0 +1,196 @@
+/* ===================================================================
+   VERSION 2 — DARK THEME
+   Imports base styles, then overrides to full dark mode
+   =================================================================== */
+
+@import url('../../css/style.css');
+
+/* ——— Dark Token Overrides ——— */
+:root {
+  --navy:        #0F1117;
+  --navy-700:    #161C28;
+  --white:       #E8EDF5;
+  --off-white:   #141921;
+  --warm-gray:   #111720;
+  --gray-100:    #1C2333;
+  --gray-200:    rgba(255, 255, 255, 0.08);
+  --gray-300:    rgba(255, 255, 255, 0.14);
+  --gray-400:    rgba(255, 255, 255, 0.32);
+  --gray-500:    rgba(255, 255, 255, 0.5);
+  --text:        #E8EDF5;
+  --text-muted:  rgba(232, 237, 245, 0.58);
+  --gold:        #C9A96E;
+  --gold-hover:  #B8975A;
+  --gold-light:  #E0C28A;
+  --shadow-sm:   0 1px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md:   0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:   0 8px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* ——— Base ——— */
+body { background: #0D1117; }
+
+/* ——— Navbar — dark ——— */
+.navbar {
+  background: #0D1117;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.navbar.scrolled {
+  background: #0D1117;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.navbar__link         { color: rgba(255, 255, 255, 0.48); }
+.navbar__link:hover   { color: var(--white); }
+.navbar__link--active { color: var(--white); font-weight: 600; }
+
+.navbar__divider { background: rgba(255, 255, 255, 0.07); }
+
+.navbar__portal {
+  color: var(--gold);
+  border-color: rgba(201, 169, 110, 0.3);
+}
+.navbar__portal:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0D1117;
+}
+
+/* Mobile nav */
+.navbar__mobile {
+  background: #0D1117;
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+.navbar__mobile-link {
+  color: rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+.navbar__hamburger span { background: rgba(255, 255, 255, 0.65); }
+
+/* ——— Hero — deepest dark ——— */
+.hero { background: #070D14; }
+
+.hero::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(201, 169, 110, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(29, 58, 92, 0.35) 0%, transparent 60%);
+}
+
+/* ——— Stats Bar — dark ——— */
+.stats-bar {
+  background: #111720;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.stat:not(:last-child) { border-right-color: rgba(255, 255, 255, 0.07); }
+.stat__number { color: var(--gold); }
+.stat__label  { color: rgba(255, 255, 255, 0.38); }
+
+/* ——— Section backgrounds ——— */
+.section--off-white { background: #141921; }
+.section--warm      { background: #111720; }
+
+/* ——— Service Cards ——— */
+.service-card {
+  background: #161D2B;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.service-card:hover {
+  background: #1B2438;
+  border-color: rgba(201, 169, 110, 0.2);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+}
+
+.service-card__title { color: var(--white); }
+
+/* ——— Value Items ——— */
+.value-item__title { color: var(--white); }
+
+/* ——— Section dark — make even darker to differentiate ——— */
+.section--dark { background: #070D14; }
+
+/* ——— Leadership Cards (about page) ——— */
+.leader-card--light {
+  background: #161D2B;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: none;
+}
+.leader-card--light:hover {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+}
+.leader-card--light .leader-card__name { color: var(--white); }
+.leader-card--light .leader-card__bio  { color: rgba(255, 255, 255, 0.5); }
+.leader-card--light .leader-card__photo { border-color: rgba(201, 169, 110, 0.25); }
+
+.credentials-list li {
+  color: rgba(255, 255, 255, 0.45);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.credentials-list { border-top-color: rgba(255, 255, 255, 0.06); }
+
+/* ——— Mission Quote ——— */
+.mission-quote { color: var(--white); }
+.mission-quote::before { color: var(--gold); }
+.mission-section.section { background: #0D1117; }
+
+/* ——— CTA Banner ——— */
+.cta-banner { background: #070D14; }
+.cta-banner::before {
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
+}
+
+/* ——— Footer ——— */
+.footer { background: #050B10; }
+.footer__grid { border-bottom-color: rgba(255, 255, 255, 0.05); }
+
+/* ——— Page Hero ——— */
+.page-hero { background: #070D14; }
+
+/* ——— Services page ——— */
+.service-detail { background: #0D1117; }
+.service-detail:nth-child(even) { background: #141921; }
+.service-list li { border-bottom-color: rgba(255, 255, 255, 0.06); }
+.service-detail__desc { color: rgba(255, 255, 255, 0.52); }
+
+/* ——— Contact Form ——— */
+.form-input,
+.form-select,
+.form-textarea {
+  background: #161D2B;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: rgba(255, 255, 255, 0.22); }
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.12);
+}
+
+.contact-info__icon { background: rgba(201, 169, 110, 0.1); }
+.contact-portals    { border-top-color: rgba(255, 255, 255, 0.07); }
+
+/* ——— Buttons on dark bg ——— */
+.btn--outline-navy {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.btn--outline-navy:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ——— Switcher — dark panel ——— */
+.site-switcher__btn { background: var(--gold); color: #070D14; }
+.site-switcher__btn:hover { background: #E0C28A; }
