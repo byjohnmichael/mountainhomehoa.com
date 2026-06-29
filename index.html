@@ -230,6 +230,9 @@
         <p style="color:var(--text-muted);font-size:1.0625rem;max-width:520px;margin:1rem auto 0;line-height:1.7;">We partner with a select group of communities. Here's what the people we serve have to say.</p>
       </div>
       <div class="testimonials-grid" id="testimonialsGrid"></div>
+      <div id="quotesShowMoreWrap" style="text-align:center;margin-top:2.5rem;display:none;">
+        <button class="btn btn--outline-slate" id="quotesShowMoreBtn">Show More</button>
+      </div>
     </div>
   </section>
 
@@ -297,8 +300,10 @@
         const references = clients.filter(c => c.includeAsReference && c.quote);
         if (!references.length) return;
 
+        const QUOTES_VISIBLE = 3;
         const grid = document.getElementById('testimonialsGrid');
-        grid.innerHTML = references.map(c => {
+
+        function buildQuoteCard(c) {
           const logo = c.logoUrl
             ? `<img src="${escHtml(c.logoUrl)}" alt="${escHtml(c.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
             : `<span class="testimonial-card__initials">${initials(c.name)}</span>`;
@@ -314,7 +319,18 @@
                 </div>
               </div>
             </div>`;
-        }).join('');
+        }
+
+        grid.innerHTML = references.slice(0, QUOTES_VISIBLE).map(buildQuoteCard).join('');
+
+        if (references.length > QUOTES_VISIBLE) {
+          const wrap = document.getElementById('quotesShowMoreWrap');
+          wrap.style.display = 'block';
+          document.getElementById('quotesShowMoreBtn').addEventListener('click', () => {
+            grid.innerHTML = references.map(buildQuoteCard).join('');
+            wrap.style.display = 'none';
+          });
+        }
 
         document.getElementById('testimonialsSection').style.display = '';
       } catch {
