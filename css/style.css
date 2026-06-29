@@ -998,11 +998,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
    TESTIMONIALS
    ══════════════════════════════════════════ */
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.75rem;
 }
 .testimonial-card {
+  flex: 0 1 clamp(280px, 30%, 420px);
   background: #fff;
   border: 1px solid rgba(31, 74, 110, 0.12);
   border-radius: 16px;
@@ -1067,5 +1069,5 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
   margin: 0.2rem 0 0;
 }
 @media (max-width: 960px) {
-  .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  .testimonials-grid { gap: 1.25rem; }
 }

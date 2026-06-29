@@ -67,14 +67,14 @@
     /* ── Client Cards ── */
     .clients-intro { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
     .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.75rem;
     }
-    @media (max-width: 960px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .clients-grid { grid-template-columns: 1fr; } }
 
     .client-card {
+      flex: 0 1 clamp(260px, 30%, 380px);
       background: #ecf3fa;
       border: 1px solid rgba(31, 74, 110, 0.15);
       border-radius: 14px;
@@ -202,7 +202,7 @@
       </div>
 
       <div id="showMoreWrap" style="text-align:center;margin-top:2.5rem;display:none;">
-        <button class="btn btn--outline-slate" id="showMoreBtn">Show More Communities</button>
+        <button class="btn btn--outline-slate" id="showMoreBtn">Show More</button>
       </div>
     </div>
   </section>
@@ -277,7 +277,7 @@
 
   <script>
     const API = 'https://assets.mountainhomehoa.com';
-    const VISIBLE = 4;
+    const VISIBLE = 3;
     let allClients = [];
     let activeClientId = null;
 
