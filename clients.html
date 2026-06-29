@@ -197,53 +197,12 @@
         <p style="color:var(--text-muted);font-size:1.0625rem;max-width:520px;margin:.875rem auto 0;line-height:1.7;">Select your community below to view and download documents. All files are managed and maintained by Mountain Home HOA Solutions.</p>
       </div>
 
-      <div class="clients-grid">
+      <div class="clients-grid" id="clientsGrid">
+        <p style="color:var(--text-muted);font-size:0.95rem;" id="clientsLoading">Loading communities…</p>
+      </div>
 
-        <article class="client-card">
-          <div class="client-card__logo">
-            <span class="client-card__initials">PRE</span>
-          </div>
-          <div>
-            <p class="client-card__meta">45 Units &nbsp;&middot;&nbsp; Residential</p>
-            <h3 class="client-card__name">Pinecone Ridge Estates</h3>
-          </div>
-          <p class="client-card__desc">A premier mountain residential community nestled in Park City's upper corridor. Access monthly financials, board minutes, and governing documents.</p>
-          <a href="#" class="btn btn--gold client-card__cta" style="opacity:.4;cursor:not-allowed;pointer-events:none;" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="15" height="15" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"/></svg>
-            Explore Files
-          </a>
-        </article>
-
-        <article class="client-card">
-          <div class="client-card__logo">
-            <span class="client-card__initials">SVR</span>
-          </div>
-          <div>
-            <p class="client-card__meta">78 Units &nbsp;&middot;&nbsp; Condominium</p>
-            <h3 class="client-card__name">Summit View Residences</h3>
-          </div>
-          <p class="client-card__desc">A ski-in/ski-out condominium association with world-class mountain amenities. Find reserve studies, annual budgets, and board communications here.</p>
-          <a href="#" class="btn btn--gold client-card__cta" style="opacity:.4;cursor:not-allowed;pointer-events:none;" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="15" height="15" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"/></svg>
-            Explore Files
-          </a>
-        </article>
-
-        <article class="client-card">
-          <div class="client-card__logo">
-            <span class="client-card__initials">DVC</span>
-          </div>
-          <div>
-            <p class="client-card__meta">120 Units &nbsp;&middot;&nbsp; Resort Community</p>
-            <h3 class="client-card__name">Deer Valley Commons</h3>
-          </div>
-          <p class="client-card__desc">A luxury resort community at the heart of Deer Valley. Access comprehensive financial reports, compliance records, and capital project updates.</p>
-          <a href="#" class="btn btn--gold client-card__cta" style="opacity:.4;cursor:not-allowed;pointer-events:none;" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="15" height="15" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"/></svg>
-            Explore Files
-          </a>
-        </article>
-
+      <div id="showMoreWrap" style="text-align:center;margin-top:2.5rem;display:none;">
+        <button class="btn btn--outline-slate" id="showMoreBtn">Show More Communities</button>
       </div>
     </div>
   </section>
@@ -298,6 +257,135 @@
       <a href="clients.html" class="site-switcher__option active"><span class="site-switcher__dot"></span>Version 3 — Mountain</a>
     </div>
   </div>
+
+  <!-- Password modal -->
+  <div class="portal-gate" id="portalGate" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="portalTitle">
+    <div class="portal-gate__card">
+      <img src="assets/logo-master.png" alt="Mountain Home HOA Solutions" class="portal-gate__logo">
+      <h2 class="portal-gate__title" id="portalTitle">Access Community Files</h2>
+      <p class="portal-gate__sub">Enter the password for <strong id="portalCommunityName"></strong> to access documents.</p>
+      <div class="portal-gate__error" id="portalError" style="display:none;">Incorrect password. Please try again.</div>
+      <div class="portal-gate__field">
+        <label style="display:block;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#1f4a6e;margin-bottom:6px;">Password</label>
+        <input type="password" id="portalPassword" placeholder="Enter community password"
+          style="width:100%;padding:10px 14px;border:1.5px solid rgba(31,74,110,0.25);border-radius:8px;font-size:0.9rem;color:#1f4a6e;font-family:inherit;outline:none;" />
+      </div>
+      <button class="btn btn--gold portal-gate__submit" id="portalSubmit">Access Files</button>
+      <button onclick="closePortal()" style="display:block;width:100%;margin-top:10px;background:none;border:none;color:rgba(31,74,110,0.5);font-size:0.85rem;cursor:pointer;padding:6px;">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const API = 'https://assets.mountainhomehoa.com';
+    const VISIBLE = 4;
+    let allClients = [];
+    let activeClientId = null;
+
+    const FOLDER_ICON = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="15" height="15" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"/></svg>`;
+
+    function initials(name) {
+      return (name || '').split(' ').slice(0, 3).map(w => w[0] || '').join('').toUpperCase() || '?';
+    }
+
+    function escHtml(s) {
+      return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function buildCard(c) {
+      const logo = c.logoUrl
+        ? `<img src="${escHtml(c.logoUrl)}" alt="${escHtml(c.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
+        : `<span class="client-card__initials">${initials(c.name)}</span>`;
+      return `
+        <article class="client-card">
+          <div class="client-card__logo">${logo}</div>
+          <div>
+            <h3 class="client-card__name">${escHtml(c.name)}</h3>
+          </div>
+          <p class="client-card__desc">${escHtml(c.description)}</p>
+          <button class="btn btn--gold client-card__cta" onclick="openPortal('${c.id}','${escHtml(c.name).replace(/'/g,'\\'+'&#39;')}')">
+            ${FOLDER_ICON} Explore Files
+          </button>
+        </article>`;
+    }
+
+    function renderClients(clients) {
+      const grid = document.getElementById('clientsGrid');
+      if (!clients.length) {
+        grid.innerHTML = '<p style="color:var(--text-muted);font-size:0.95rem;text-align:center;grid-column:1/-1;">No communities are currently listed.</p>';
+        return;
+      }
+      grid.innerHTML = clients.slice(0, VISIBLE).map(buildCard).join('');
+
+      if (clients.length > VISIBLE) {
+        const wrap = document.getElementById('showMoreWrap');
+        wrap.style.display = 'block';
+        document.getElementById('showMoreBtn').onclick = () => {
+          grid.innerHTML = clients.map(buildCard).join('');
+          wrap.style.display = 'none';
+        };
+      }
+    }
+
+    async function loadClients() {
+      try {
+        const res = await fetch(`${API}/api/clients`);
+        allClients = await res.json();
+        renderClients(allClients);
+      } catch {
+        document.getElementById('clientsGrid').innerHTML =
+          '<p style="color:var(--text-muted);font-size:0.95rem;text-align:center;grid-column:1/-1;">Unable to load communities. Please try again later.</p>';
+      }
+    }
+
+    // ── Password portal ──────────────────────────────────────────
+    function openPortal(id, name) {
+      activeClientId = id;
+      document.getElementById('portalCommunityName').textContent = name;
+      document.getElementById('portalPassword').value = '';
+      document.getElementById('portalError').style.display = 'none';
+      document.getElementById('portalGate').style.display = 'flex';
+      setTimeout(() => document.getElementById('portalPassword').focus(), 50);
+    }
+
+    function closePortal() {
+      document.getElementById('portalGate').style.display = 'none';
+      activeClientId = null;
+    }
+
+    document.getElementById('portalSubmit').addEventListener('click', submitPortal);
+    document.getElementById('portalPassword').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitPortal();
+      if (e.key === 'Escape') closePortal();
+    });
+
+    async function submitPortal() {
+      const password = document.getElementById('portalPassword').value;
+      const btn = document.getElementById('portalSubmit');
+      document.getElementById('portalError').style.display = 'none';
+      btn.textContent = 'Checking…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API}/api/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: activeClientId, password }),
+        });
+        if (!res.ok) throw new Error();
+        const { url } = await res.json();
+        closePortal();
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch {
+        document.getElementById('portalError').style.display = 'block';
+        document.getElementById('portalPassword').select();
+      } finally {
+        btn.textContent = 'Access Files';
+        btn.disabled = false;
+      }
+    }
+
+    loadClients();
+  </script>
 
   <script src="js/main.js"></script>
 </body>
