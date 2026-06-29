@@ -277,7 +277,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 .hero {
   min-height: calc(100svh - 142px);
   background:
-    linear-gradient(rgba(28, 52, 97, 0.62), rgba(28, 52, 97, 0.55)),
+    linear-gradient(rgba(28, 52, 97, 0.25), rgba(28, 52, 97, 0.20)),
     url('../assets/hero.png') center/cover no-repeat;
   display: flex;
   align-items: flex-start;
@@ -316,7 +316,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 .hero__heading em {
   font-style: italic;
   font-weight: 400;
-  color: var(--gold-light);
+  color: var(--white);
 }
 
 .hero__subtext {
@@ -382,7 +382,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 }
 
 .hero__specialty-closing {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.65;
   font-style: italic;
@@ -416,12 +416,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 .stat:not(:last-child) { border-right: 1px solid var(--stone); }
 
 .stat__number {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(2.25rem, 4vw, 3.25rem);
-  font-weight: 300;
+  font-weight: 600;
   color: var(--slate-deeper);
   line-height: 1;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .stat__number sup { font-size: 0.5em; color: var(--slate-dark); vertical-align: super; }
