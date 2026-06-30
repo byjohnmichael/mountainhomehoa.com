@@ -77,20 +77,45 @@
         <p style="color:var(--text-muted);font-size:1.0625rem;max-width:500px;margin:.875rem auto 0;line-height:1.7;">Our leadership team brings decades of combined experience and a CFO-level approach to every community they serve.</p>
       </div>
       <div class="team-grid" id="about-team-grid"></div>
+      <div id="about-team-more" style="display:none;text-align:center;margin-top:2rem;">
+        <button class="btn btn--outline-slate" id="about-team-more-btn" onclick="aboutTeamShowMore()">Show More</button>
+      </div>
       <script>
+        var _aboutTeamAll = [];
+        var _aboutTeamExpanded = false;
+
+        function renderAboutTeam() {
+          const grid = document.getElementById('about-team-grid');
+          const shown = _aboutTeamExpanded ? _aboutTeamAll : _aboutTeamAll.slice(0, 5);
+          grid.innerHTML = shown.map(m => {
+            const inits = (m.name || '').split(' ').map(w => w[0] || '').join('').toUpperCase().slice(0, 2) || '?';
+            const photo = m.photoUrl
+              ? `<div class="team-card__photo"><img src="${m.photoUrl}" alt="${m.name}" loading="lazy"></div>`
+              : `<div class="team-card__photo team-card__photo--placeholder" aria-hidden="true"><span class="team-card__initials">${inits}</span></div>`;
+            return `<article class="team-card">${photo}<div class="team-card__info"><h3 class="team-card__name">${m.name}</h3><p class="team-card__role">${m.role}</p>${m.bio ? `<p class="team-card__bio">${m.bio}</p>` : ''}</div></article>`;
+          }).join('');
+          const moreWrap = document.getElementById('about-team-more');
+          const moreBtn  = document.getElementById('about-team-more-btn');
+          if (_aboutTeamAll.length > 5) {
+            moreWrap.style.display = 'block';
+            moreBtn.textContent = _aboutTeamExpanded ? 'Show Less' : 'Show More';
+          } else {
+            moreWrap.style.display = 'none';
+          }
+        }
+
+        function aboutTeamShowMore() {
+          _aboutTeamExpanded = !_aboutTeamExpanded;
+          renderAboutTeam();
+        }
+
         (async () => {
           const grid = document.getElementById('about-team-grid');
           try {
             const res = await fetch('https://assets.mountainhomehoa.com/api/team');
-            const members = (await res.json()).filter(m => m.showOnAbout);
-            if (!members.length) { grid.style.display = 'none'; return; }
-            grid.innerHTML = members.map(m => {
-              const inits = (m.name || '').split(' ').map(w => w[0] || '').join('').toUpperCase().slice(0, 2) || '?';
-              const photo = m.photoUrl
-                ? `<div class="team-card__photo"><img src="${m.photoUrl}" alt="${m.name}" loading="lazy"></div>`
-                : `<div class="team-card__photo team-card__photo--placeholder" aria-hidden="true"><span class="team-card__initials">${inits}</span></div>`;
-              return `<article class="team-card">${photo}<div class="team-card__info"><h3 class="team-card__name">${m.name}</h3><p class="team-card__role">${m.role}</p>${m.bio ? `<p class="team-card__bio">${m.bio}</p>` : ''}</div></article>`;
-            }).join('');
+            _aboutTeamAll = (await res.json()).filter(m => m.showOnAbout);
+            if (!_aboutTeamAll.length) { grid.style.display = 'none'; return; }
+            renderAboutTeam();
           } catch (e) { grid.style.display = 'none'; }
         })();
       </script>
