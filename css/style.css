@@ -3,7 +3,7 @@
    Editorial, photo-forward, warmer palette, asymmetric layouts
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@200;300&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ——— Reset ——— */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -115,11 +115,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
   transform: translateY(-1px); box-shadow: 0 4px 16px rgba(61,106,152,0.32);
 }
 
+.btn--hero-solid {
+  background: var(--white); color: var(--slate-deeper); border-color: var(--white);
+}
+.btn--hero-solid:hover {
+  background: rgba(255,255,255,0.88); border-color: rgba(255,255,255,0.88);
+  transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
 .btn--outline-white {
-  background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5);
+  background: transparent; color: var(--white); border-color: rgba(255,255,255,0.75);
 }
 .btn--outline-white:hover {
-  border-color: var(--white); background: rgba(255,255,255,0.1);
+  border-color: var(--white); background: rgba(255,255,255,0.15);
 }
 
 .btn--outline-slate {
@@ -311,6 +319,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
   color: var(--white);
   margin-bottom: 1.5rem;
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.45), 0 1px 6px rgba(0,0,0,0.3);
 }
 
 .hero__heading em {
@@ -321,11 +330,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 
 .hero__subtext {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
   max-width: 640px;
   margin-inline: auto;
   line-height: 1.75;
   margin-bottom: 1.5rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
 }
 
 .hero__specialty {
@@ -416,9 +426,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 .stat:not(:last-child) { border-right: 1px solid var(--stone); }
 
 .stat__number {
-  font-family: var(--font-body);
+  font-family: 'Raleway', sans-serif;
   font-size: clamp(2.25rem, 4vw, 3.25rem);
-  font-weight: 600;
+  font-weight: 200;
   color: var(--slate-deeper);
   line-height: 1;
   margin-bottom: 0.5rem;
@@ -687,21 +697,22 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
    ══════════════════════════════════════════ */
 .page-hero {
   background:
-    linear-gradient(rgba(28,52,97,0.72), rgba(28,52,97,0.72)),
-    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    linear-gradient(rgba(28,52,97,0.42), rgba(28,52,97,0.38)),
+    url('../assets/page-hero.png') center/cover no-repeat;
   padding: clamp(5rem, 9vw, 7rem) var(--pad-x) clamp(3.5rem, 6vw, 5rem);
   text-align: center;
 }
 
-.page-hero .eyebrow { margin-bottom: 0.75rem; color: rgba(255,255,255,0.7); }
-.page-hero h1 { color: var(--white); margin-bottom: 1rem; }
+.page-hero .eyebrow { margin-bottom: 0.75rem; color: rgba(255,255,255,0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+.page-hero h1 { color: var(--white); margin-bottom: 1rem; text-shadow: 0 2px 20px rgba(0,0,0,0.45), 0 1px 6px rgba(0,0,0,0.3); }
 
 .page-hero__sub {
   font-size: 1.0625rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.9);
   max-width: 520px;
   margin-inline: auto;
   line-height: 1.7;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
 }
 
 /* ══════════════════════════════════════════
@@ -731,6 +742,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
 }
 
 .service-detail:nth-child(even) .service-list li { border-color: var(--warm-gray); }
+.service-list li:last-child { border-bottom: none; }
 
 .service-list li::before {
   content: '';
